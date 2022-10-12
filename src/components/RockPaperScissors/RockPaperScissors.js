@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './RockPaperScissors.css';
 
-export default function RockPaperScissors() {
+const RockPaperScissors = () => {
   const [userChoice, setUserChoice] = useState('(...Waiting for Player)');
   const [computerChoice, setComputerChoice] = useState('(...Waiting for Computer)');
 
@@ -66,7 +66,7 @@ export default function RockPaperScissors() {
   }, [userChoice, computerChoice])
 
   return (
-    <div>
+    <div className="rpcContainer">
       <h1>Rock-Paper-Scissors</h1>
       <div>
         <div>
@@ -98,3 +98,5 @@ export default function RockPaperScissors() {
     </div>
   )
 }
+
+export default RockPaperScissors;
