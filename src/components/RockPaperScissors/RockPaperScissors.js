@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import './RockPaperScissors.css';
 
 const RockPaperScissors = () => {
-  const [userChoice, setUserChoice] = useState('(...Waiting for Player)');
-  const [computerChoice, setComputerChoice] = useState('(...Waiting for Computer)');
+  const [userChoice, setUserChoice] = useState('...');
+  const [computerChoice, setComputerChoice] = useState('...');
 
   const [userPoints, setUserPoints] = useState(0)
   const [computerPoints, setComputerPoints] = useState(0)
 
-  const [roundResult, setRoundResult] = useState(null);
-  const [matchResult, setMatchResult] = useState(null);
+  const [roundResult, setRoundResult] = useState('(...)');
+  const [matchResult, setMatchResult] = useState('(...)');
   const [gameOver, setGameOver] = useState(false);
 
   const choices = ['rock', 'paper', 'scissors'];
@@ -67,19 +67,22 @@ const RockPaperScissors = () => {
 
   return (
     <div className="rpcContainer">
-      <h1>Rock-Paper-Scissors</h1>
-      <div>
-        <div>
-          <h1>You: {userPoints}</h1>
-          <h1>Computer: {computerPoints}</h1>
+      <h1 className="rpcTitle">Rock-Paper-Scissors</h1>
+      <div className="rpcOutputContainer">
+        <div className="rpcPlayerBoard">
+          <div>
+            <h2>You: <span className="rpcChoiceOutput">( {userChoice} )</span></h2>
+            <h3>VS</h3>
+            <h2>Computer: <span className="rpcChoiceOutput">( {computerChoice} )</span></h2>
+          </div>
+          <div>
+            <h3>Score: You - {userPoints} | PC - {computerPoints}
+            </h3>
+          </div>
         </div>
         <div>
-          <div>You chose: {userChoice}</div>
-          <div>Computer chose: {computerChoice}</div>
-        </div>
-        <div>
-          <h1>Round Result: {roundResult}</h1>
-          <h1>Match Result: {matchResult}</h1>
+          <h1>Round Result: <span className="results">{roundResult}</span></h1>
+          <h1>Match Result: <span className="results">{matchResult}</span></h1>
         </div>
         <div>
           {gameOver &&
