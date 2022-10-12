@@ -2,7 +2,7 @@ import React from "react";
 
 const WhacAMole = () => {
   return (
-    <h1>Memory Match</h1>
+    <h1>Whac-A-Mole</h1>
   )
 }
 
