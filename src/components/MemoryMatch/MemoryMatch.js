@@ -6,7 +6,7 @@ const MemoryMatch = () => {
 
   return (
     <div>
-      <h1>Memory Match</h1>
+      <h1 className='memoTitle' >Memory Match</h1>
       <div className="memoGameContainer">
         <CardImages />
       </div>
