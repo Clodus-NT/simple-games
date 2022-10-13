@@ -1,7 +1,27 @@
 import React, { useState } from "react";
+import MemoModal from "./MemoModal.js";
 import Card from './Card.js';
 
 const CardImages = () => {
+  // const [items, setItems] = useState([
+  //   { id: 1, img: '/img/MemImg/angular.png', stat: 'correct'},
+  //   { id: 1, img: '/img/MemImg/angular.png', stat: 'correct'},
+  //   { id: 1, img: '/img/MemImg/angular.png', stat: 'correct'},
+  //   { id: 2, img: '/img/MemImg/css.png', stat: 'correct'},
+  //   { id: 2, img: '/img/MemImg/css.png', stat: 'correct'},
+  //   { id: 3, img: '/img/MemImg/html.png', stat: 'correct'},
+  //   { id: 3, img: '/img/MemImg/html.png', stat: 'correct'},
+  //   { id: 4, img: '/img/MemImg/js.png', stat: 'correct'},
+  //   { id: 4, img: '/img/MemImg/js.png', stat: 'correct'},
+  //   { id: 5, img: '/img/MemImg/nodejs.png', stat: 'correct'},
+  //   { id: 5, img: '/img/MemImg/nodejs.png', stat: 'correct'},
+  //   { id: 6, img: '/img/MemImg/react.png', stat: 'correct'},
+  //   { id: 6, img: '/img/MemImg/react.png', stat: 'correct'},
+  //   { id: 7, img: '/img/MemImg/scss.png', stat: 'correct'},
+  //   { id: 7, img: '/img/MemImg/scss.png', stat: 'correct'},
+  //   { id: 8, img: '/img/MemImg/vue.png', stat: 'correct'},
+  //   { id: 8, img: '/img/MemImg/vue.png', stat: 'correct'}
+  // ].sort(() => Math.random() - 0.5))
   const [items, setItems] = useState([
     { id: 1, img: '/img/MemImg/angular.png', stat: ''},
     { id: 1, img: '/img/MemImg/angular.png', stat: ''},
@@ -21,7 +41,7 @@ const CardImages = () => {
     { id: 8, img: '/img/MemImg/vue.png', stat: ''}
   ].sort(() => Math.random() - 0.5))
 
-  const [prev, setprev] = useState(-1)
+  const [prev, setprev] = useState(-1);
 
   const checkId = (current) => {
     if (items[current].id === items[prev].id) {
@@ -56,20 +76,12 @@ const CardImages = () => {
     (item) => item.stat === 'correct'
   )
 
-  if (isAllCorrect) {
-    setTimeout(() => {
-      alert('You Won! Page will refresh in a few seconds.')
-      window.location.reload();
-    }, 350)
-  }
-
-  console.log(isAllCorrect)
-
   return (
     <div className="cardImagesContainer">
       { items.map((item, index) => (
         <Card item={item} index={index} id={index} handleCardClick={handleCardClick} />
       )) }
+      {isAllCorrect && <MemoModal />}
     </div>
 
   )
