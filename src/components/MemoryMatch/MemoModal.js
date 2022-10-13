@@ -1,16 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import './MemoryMatch.css'
 
 const MemoModal = () => {
-  const [memoModal, setMemoModal] = useState(false)
-
-  const closeMemoModal = () => {
-    setMemoModal(!memoModal)
-  }
-
-  // const resetMemoGame = () => {
-  //   window.location.reload();
-  // }
 
   return (
     <div className='memoModal'>
