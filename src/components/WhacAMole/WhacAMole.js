@@ -1,24 +1,17 @@
 import React, { useState } from "react";
 import MoleImages from "./MoleImages";
+import MoleTimer from "./MoleTimer";
 import './WhacAMole.css';
 
 const WhacAMole = () => {
-  const [moleHill, setMoleHill] = useState([
-    { id: 1, img: '/img/mole/mole.jpg', stat: ''},
-    { id: 2, img: '/img/mole/mole.jpg', stat: ''},
-    { id: 3, img: '/img/mole/mole.jpg', stat: ''},
-    { id: 4, img: '/img/mole/mole.jpg', stat: ''},
-    { id: 5, img: '/img/mole/mole.jpg', stat: ''},
-    { id: 6, img: '/img/mole/mole.jpg', stat: ''},
-    { id: 7, img: '/img/mole/mole.jpg', stat: ''},
-    { id: 8, img: '/img/mole/mole.jpg', stat: ''},
-    { id: 9, img: '/img/mole/mole.jpg', stat: ''},
-  ])
-  // .sort(() => Math.random() - 0.5)
+  const [moleScore, setMoleScore] = useState(0);
 
   return (
     <>
       <h1 className="moleTitle">Whac-A-Mole</h1>
+      <MoleTimer />
+      <h3 className="moleScore">Score: {moleScore}</h3>
+      {/* <button className='moleStartBtn' onClick={moleCountdown}>Start</button> */}
       <div className="moleGameContainer">
         <MoleImages />
       </div>
