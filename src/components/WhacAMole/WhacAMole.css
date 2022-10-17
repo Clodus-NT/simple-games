@@ -1,0 +1,29 @@
+.moleTitle {
+  text-align: center;
+}
+
+.moleGameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moleGrid {
+  display: grid;
+  width: 700px;
+  height: 700px;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.hillTile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1.5px black;
+}
+
+.hillTile img {
+  width: 100%;
+  height: 100%;
+}

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import MoleImages from "./MoleImages";
+import MoleHill from "./MoleHill";
 import './WhacAMole.css';
 
-const WhacAMole = () => {
+const MoleImages = () => {
   const [moleHill, setMoleHill] = useState([
     { id: 1, img: '/img/mole/mole.jpg', stat: ''},
     { id: 2, img: '/img/mole/mole.jpg', stat: ''},
@@ -17,13 +17,12 @@ const WhacAMole = () => {
   // .sort(() => Math.random() - 0.5)
 
   return (
-    <>
-      <h1 className="moleTitle">Whac-A-Mole</h1>
-      <div className="moleGameContainer">
-        <MoleImages />
-      </div>
-    </>
+    <div className="moleGrid">
+      { moleHill.map((moleHill, index) => (
+        <MoleHill moleHill={moleHill} index={index} id={index}>yes</MoleHill>
+      )) }
+    </div>
   )
 }
 
-export default WhacAMole;
+export default MoleImages;
