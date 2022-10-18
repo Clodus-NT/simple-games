@@ -1,0 +1,8 @@
+.breakoutWrapper {
+  padding: 40px;
+}
+
+.breakoutCanvas {
+  background-color: aqua;
+  border-radius: 15px;
+}
