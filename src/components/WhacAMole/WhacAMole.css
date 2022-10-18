@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.moleStartBtn,
+.moleStopBtn {
+  margin: 0px 2px 5px 2px;
+}
+
 .moleGameContainer {
   display: flex;
   justify-content: center;
@@ -17,6 +22,7 @@
 }
 
 .moleGrid {
+  margin: auto;
   display: grid;
   width: 700px;
   height: 700px;
@@ -29,9 +35,14 @@
   justify-content: center;
   align-items: center;
   border: solid black 1.5px;
+  background-color: white;
 }
 
 .hillTile img {
   width: 100%;
   height: 100%;
+}
+
+.hideMole {
+  display: none;
 }
