@@ -16,8 +16,6 @@ const MoleEngine = () => {
       }, 1000)
     } else {
       setMoleTimer(30);
-      // moleScore = 0;
-      // setMoleScore(0);
       setMoleTimerOn(false);
       clearInterval(interval)
     }
@@ -29,7 +27,6 @@ const MoleEngine = () => {
     return () => clearInterval(interval)
   }, [moleTimer, moleTimerOn, randomMole])
 
-  // let moleScore = 0;
   const moleClick = () => {
     setMoleScore(prevScore => prevScore + 1)
   }
