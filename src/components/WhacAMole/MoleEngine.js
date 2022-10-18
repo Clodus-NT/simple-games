@@ -7,8 +7,6 @@ const MoleEngine = () => {
   const [moleScore, setMoleScore] = useState(0);
   const [randomMole, setRandomMole] = useState(0);
 
-
-
   useEffect(() => {
     let interval = null;
 
@@ -18,7 +16,9 @@ const MoleEngine = () => {
       }, 1000)
     } else {
       setMoleTimer(30);
-      setMoleScore(0);
+      // moleScore = 0;
+      // setMoleScore(0);
+      setMoleTimerOn(false);
       clearInterval(interval)
     }
 
@@ -27,11 +27,17 @@ const MoleEngine = () => {
     }
 
     return () => clearInterval(interval)
-  }, [moleTimer, moleTimerOn, randomMole, moleScore])
+  }, [moleTimer, moleTimerOn, randomMole])
 
+  // let moleScore = 0;
   const moleClick = () => {
     setMoleScore(prevScore => prevScore + 1)
   }
+
+  const resetMole = () => {
+    setMoleScore(0) 
+    setMoleTimer(false)
+  };
 
   return (
     <>
@@ -39,7 +45,7 @@ const MoleEngine = () => {
     <h2 className="moleTitle">Score: {moleScore}</h2>
     <div className="moleBtn">
       <button className='moleStartBtn' onClick={() => setMoleTimerOn(true)}>Start</button>
-      <button className='moleStartBtn' onClick={() => setMoleTimerOn(false)}>Reset</button>
+      <button className='moleStopBtn' onClick={resetMole}>Reset</button>
     </div>
     <div className="moleGrid">
       <div className='hillTile'>
