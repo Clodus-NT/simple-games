@@ -3,7 +3,6 @@ import MoleEngine from "./MoleEngine";
 import './WhacAMole.css';
 
 const WhacAMole = () => {
-  // const [moleScore, setMoleScore] = useState(0);
 
   return (
     <>
