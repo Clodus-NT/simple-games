@@ -6,6 +6,7 @@ import './Breakout.css';
 import PaddleMovement from './PaddleMovement';
 import Brick from './Brick';
 import BrickCollision from './utility/BrickCollision';
+import PaddleCollision from './utility/PaddleCollision';
 
 let bricks = [];
 let {ballObj, paddleProps, brickObj} = BreakoutData;
@@ -53,6 +54,8 @@ export default function Board() {
 
       PaddleMovement(ctx, canvas, paddleProps);
 
+      PaddleCollision(ballObj, paddleProps);
+
       requestAnimationFrame(render);
     }
     render();
@@ -66,7 +69,12 @@ export default function Board() {
       className='breakoutCanvas' 
       height="500px" 
       // width="800px"
-      onMouseMove={(event) => paddleProps.x = event.clientX - paddleProps.width / 2 - 10}
+      onMouseMove={(event) => {
+        paddleProps.x = 
+        event.clientX - 
+        (window.innerWidth < 900 ? 10 : (window.innerWidth * 20) / 200) - 
+        paddleProps.width / 2 - 10
+      }}
       width={
         window.innerWidth < 900
           ? window.innerWidth - 20

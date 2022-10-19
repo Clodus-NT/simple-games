@@ -1,5 +1,3 @@
-import { CompressedTexture } from "three";
-
 const PaddleMovement = (ctx, canvas, paddleProps) => {
   class Paddle {
     constructor(x) {
