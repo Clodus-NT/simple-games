@@ -23,7 +23,7 @@ export default function Board() {
       paddleProps.y = canvas.height - 30;
 
       //Assign Bricks
-      let newBrickSet = Brick(1, bricks, canvas, brickObj)
+      let newBrickSet = Brick(player.level, bricks, canvas, brickObj)
 
       if (newBrickSet && newBrickSet.length > 0) {
         bricks = newBrickSet;
