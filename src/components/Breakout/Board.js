@@ -7,9 +7,10 @@ import PaddleMovement from './PaddleMovement';
 import Brick from './Brick';
 import BrickCollision from './utility/BrickCollision';
 import PaddleCollision from './utility/PaddleCollision';
+import PlayerStats from './PlayerStats';
 
 let bricks = [];
-let {ballObj, paddleProps, brickObj} = BreakoutData;
+let {ballObj, paddleProps, brickObj, player} = BreakoutData;
 
 export default function Board() {
   const canvasRef = useRef(null);
@@ -26,7 +27,11 @@ export default function Board() {
       if (newBrickSet && newBrickSet.length > 0) {
         bricks = newBrickSet;
       }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      //Player
+      PlayerStats(ctx, player, canvas, brickObj);
 
       //Display Bricks
       bricks.map((brick) => {
