@@ -5,6 +5,8 @@ export default function WallCollision(ballObj, canvas, player, paddleProps) {
     ballObj.y = paddleProps.y - 30;
     ballObj.dx = 6 * (Math.random() * 2 - 1);
     ballObj.dy = -6;
+    ballObj.dy *= -1;
+    return;
   }
   
   if (ballObj.y - ballObj.rad < 0) {
