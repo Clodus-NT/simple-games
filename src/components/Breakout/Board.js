@@ -9,6 +9,7 @@ import BrickCollision from './utility/BrickCollision';
 import PaddleCollision from './utility/PaddleCollision';
 import PlayerStats from './PlayerStats';
 import AllBroke from './utility/AllBroke';
+import ResetBall from './utility/ResetBall';
 
 let bricks = [];
 let {ballObj, paddleProps, brickObj, player} = BreakoutData;
@@ -33,6 +34,16 @@ export default function Board() {
 
       //Player
       PlayerStats(ctx, player, canvas, brickObj);
+
+      //Game Over
+      if (player.lives === 0) {
+        alert('Game Over! Press ok to restart.')
+        bricks.length = 0;
+        player.lives = 5;
+        player.level = 1;
+        player.score = 0;
+        ResetBall(ballObj, canvas, paddleProps);
+      }
 
       //Display Bricks
       bricks.map((brick) => {
