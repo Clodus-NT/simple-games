@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react';
 
 export default function Brick(level, bricks, canvas, brick) {
   brick.width = canvas.width / 5 - 1;

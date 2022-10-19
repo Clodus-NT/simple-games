@@ -5,6 +5,7 @@ import { BreakoutData } from '../../BreakoutData';
 import './Breakout.css';
 import PaddleMovement from './PaddleMovement';
 import Brick from './Brick';
+import BrickCollision from './utility/BrickCollision';
 
 let bricks = [];
 let {ballObj, paddleProps, brickObj} = BreakoutData;
@@ -34,6 +35,21 @@ export default function Board() {
       BallMovement(ctx, ballObj);
 
       WallCollision(ballObj, canvas);
+
+      let brickCollision;
+      for (let i = 0; i < bricks.length; i++) {
+        brickCollision = BrickCollision(ballObj, bricks[i]);
+
+        if (brickCollision.hit && !bricks[i].broke) {
+          if (brickCollision.axis === 'X') {
+            ballObj.dx *= -1;
+            bricks[i].broke = true;
+          } else if (brickCollision.axis ==='Y') {
+            ballObj.dy *= -1;
+            bricks[i].broke = true;
+          }
+        }
+      }
 
       PaddleMovement(ctx, canvas, paddleProps);
 
