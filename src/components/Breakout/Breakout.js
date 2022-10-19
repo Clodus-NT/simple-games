@@ -5,7 +5,7 @@ import './Breakout.css';
 const Breakout = () => {
   return (
     <div className="breakoutWrapper">
-      <h1>Breakout</h1>
+      <h1 className="breakoutTitle">Breakout</h1>
       <Board />
     </div>    
   )
