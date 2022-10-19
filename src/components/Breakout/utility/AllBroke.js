@@ -9,7 +9,7 @@ export default function AllBroke(bricks, player, canvas, ballObj) {
     }
   }
   if (total === bricks.length) {
-    // alert('Level Complete')
+    alert('Level Complete')
     player.level++;
     ballObj.y = canvas.height - 20;
     brickObj.y = 50;
