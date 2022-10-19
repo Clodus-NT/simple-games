@@ -1,30 +1,41 @@
 import React, { useRef, useEffect } from 'react';
 import BallMovement from './BallMovement';
+import WallCollision from './utility/WallCollision';
 import { BreakoutData } from '../../BreakoutData';
 import './Breakout.css';
+import PaddleMovement from './PaddleMovement';
+import Brick from './Brick';
 
+let bricks = [];
+let {ballObj, paddleProps, brickObj} = BreakoutData;
 
 export default function Board() {
   const canvasRef = useRef(null);
+
   useEffect(() => {
     const render = () => {
       const canvas = canvasRef.current;
-      if(canvas === null) {return null};
       const ctx = canvas.getContext('2d');
+      paddleProps.y = canvas.height - 30;
 
-      let {ballObj} = BreakoutData;
+      //Assign Bricks
+      let newBrickSet = Brick(2, bricks, canvas, brickObj)
 
+      if (newBrickSet && newBrickSet.length > 0) {
+        bricks = newBrickSet;
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      //Display Bricks
+      bricks.map((brick) => {
+        return brick.draw(ctx);
+      })
 
       BallMovement(ctx, ballObj);
 
-      if (ballObj.y - ballObj.rad <= 0 || ballObj.y + ballObj.rad >= canvas.height) {
-        ballObj.dy *= -1;
-      }
+      WallCollision(ballObj, canvas);
 
-      if (ballObj.x + ballObj.rad >= canvas.width || ballObj.x - ballObj.rad <= 0) {
-        ballObj.dx *= -1;
-      }
+      PaddleMovement(ctx, canvas, paddleProps);
 
       requestAnimationFrame(render);
     }
@@ -39,6 +50,7 @@ export default function Board() {
       className='breakoutCanvas' 
       height="500px" 
       // width="800px"
+      onMouseMove={(event) => paddleProps.x = event.clientX - paddleProps.width / 2 - 10}
       width={
         window.innerWidth < 900
           ? window.innerWidth - 20

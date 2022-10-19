@@ -4,7 +4,7 @@ export const BreakoutData = {
     y: 200,
     dx: 5,
     dy: 5,
-    rad: 10,
+    rad: 15,
     speed: 10,
   },
   brickObj: {
@@ -15,7 +15,7 @@ export const BreakoutData = {
     colors: ["red", "lightblue"],
   },
   player: {
-    name: "Dhaval",
+    name: "Nick",
     lives: 5,
     score: 0,
     level: 1,
