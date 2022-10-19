@@ -8,6 +8,7 @@ import Brick from './Brick';
 import BrickCollision from './utility/BrickCollision';
 import PaddleCollision from './utility/PaddleCollision';
 import PlayerStats from './PlayerStats';
+import AllBroke from './utility/AllBroke';
 
 let bricks = [];
 let {ballObj, paddleProps, brickObj, player} = BreakoutData;
@@ -40,7 +41,9 @@ export default function Board() {
 
       BallMovement(ctx, ballObj);
 
-      WallCollision(ballObj, canvas, player);
+      AllBroke(bricks, player, canvas, ballObj);
+
+      WallCollision(ballObj, canvas, player, paddleProps);
 
       let brickCollision;
       for (let i = 0; i < bricks.length; i++) {
@@ -73,20 +76,20 @@ export default function Board() {
   return (
     <canvas 
       className='breakoutCanvas' 
-      height="500px" 
-      // width="800px"
+      ref={canvasRef} 
       onMouseMove={(event) => {
         paddleProps.x = 
         event.clientX - 
         (window.innerWidth < 900 ? 10 : (window.innerWidth * 20) / 200) - 
         paddleProps.width / 2 - 10
       }}
+      height="500px"
       width={
         window.innerWidth < 900
           ? window.innerWidth - 20
           : window.innerWidth - (window.innerWidth * 20) / 100
       }
-      ref={canvasRef}
+      
     />
   )
 }
